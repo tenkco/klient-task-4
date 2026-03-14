@@ -44,7 +44,7 @@ export default {
 
 <style scoped>
 .product-card {
-  border: 1px solid white;
+  border: 1px solid gray;
   border-radius: 8px;
   padding: 15px;
   text-align: center;

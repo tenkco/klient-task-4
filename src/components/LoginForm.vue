@@ -65,12 +65,12 @@ export default {
   width: 300px;
   padding: 20px;
   margin: 0 auto;
-  border: 1px solid white;
+  border: 1px solid gray;
   border-radius: 8px;
 }
 
 .login input {
-  border: 1px solid white;
+  border: 1px solid gray;
   border-radius: 4px;
   padding: 8px;
   margin-bottom: 10px;

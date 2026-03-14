@@ -83,12 +83,12 @@ export default {
   width: 300px;
   padding: 20px;
   margin: 0 auto;
-  border: 1px solid white;
+  border: 1px solid grey;
   border-radius: 8px;
 }
 
 .register input {
-  border: 1px solid #ddd;
+  border: 1px solid grey;
   border-radius: 4px;
   padding: 8px;
   margin-bottom: 10px;
@@ -121,7 +121,7 @@ export default {
 
 hr {
   margin: 15px 0;
-  border: 1px solid white;
+  border: 1px solid grey;
 }
 
 label {
