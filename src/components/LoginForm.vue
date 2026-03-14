@@ -1,4 +1,3 @@
-<!-- Коммит 4: Создание компонента формы входа -->
 <template>
   <form class="login" @submit.prevent="onSubmit">
     <h1>Вход в систему</h1>
