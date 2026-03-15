@@ -23,7 +23,6 @@ export default {
           headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${localStorage.getItem("token")}`,
           },
           body: JSON.stringify({
             email: params.email,
@@ -31,7 +30,11 @@ export default {
             password: params.password
           })
         })
-        if (!response.ok) throw "Ты лох неправильная юрл"
+        if (!response.ok) {
+          const errorData = await response.json();
+          console.log('Ошибка сервера:', errorData);
+          throw "неправильная юрл";
+        }
         const data = await response.json()
         localStorage.setItem("token", data.data.user_token) || '';
         await router.push('/catalog')

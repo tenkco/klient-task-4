@@ -1,4 +1,4 @@
-import Vue, {reactive, ref} from 'vue'
+import Vue from 'vue'
 import Vuex from 'vuex'
 
 Vue.use(Vuex)
@@ -20,23 +20,9 @@ export default new Vuex.Store({
   }
 })
 
-export const store = reactive({
+export const store = Vue.observable({
   token: '',
   setToken(token) {
     if (token) this.token = token
   }
 })
-
-const token = ref('')
-
-
-export const useAccountStore = () => {
-  const setToken = (t) => {
-    if (t) token.value = t
-  }
-
-  return {
-    token,
-    setToken
-  }
-}
