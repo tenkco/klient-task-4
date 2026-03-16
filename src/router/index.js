@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import CatalogView from "@/views/CatalogView.vue";
 import RegisterView from "@/views/RegisterView.vue";
 import LoginView from "@/views/LoginView.vue";
 import HomeView from "@/views/HomeView.vue";
@@ -23,12 +22,6 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
-  },
-  {
-    path: '/catalog',
-    name: 'catalog',
-    component: CatalogView,
-    meta: {requiresAuth: true}
   },
   {
     path: '/cart',
