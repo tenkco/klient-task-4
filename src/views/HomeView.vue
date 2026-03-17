@@ -84,7 +84,7 @@ export default {
 
     logout() {
       localStorage.removeItem('token');
-      router.replace('/');
+      router.push('/');
       window.location.href = '/';
     }
   }
