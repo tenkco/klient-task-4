@@ -124,6 +124,12 @@ export default {
   flex-shrink: 0;
 }
 
+.add-btn:hover{
+  color: darkgreen;
+  background: white;
+  border: 1px solid darkgreen;
+}
+
 .delete-btn {
   margin-top: 5px;
   padding: 10px 24px;

@@ -1,7 +1,7 @@
 <template>
   <div class="cart">
     <h2>Корзина</h2>
-    <router-link to="/">Вернуться в каталог</router-link>
+    <router-link class="router-link" to="/">Вернуться в каталог</router-link>
 
     <div v-if="items.length === 0" class="empty-cart">
       Корзина пуста
@@ -187,6 +187,16 @@ h2 {
   margin-bottom: 20px;
 }
 
+.router-link{
+  color: black;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.router-link:hover{
+  color: darkred;
+}
+
 .empty-cart {
   text-align: center;
   padding: 50px;
@@ -266,6 +276,12 @@ h2 {
   cursor: pointer;
 }
 
+.delete-btn:hover{
+  background: white;
+  color: darkred;
+  border: 1px solid darkred;
+}
+
 .cart-footer {
   margin-top: 20px;
   padding: 20px;
@@ -288,5 +304,11 @@ h2 {
   border: none;
   border-radius: 25px;
   font-size: 16px;
+}
+
+.checkout-btn:hover{
+  background: white;
+  color: darkgreen;
+  border: 1px solid darkgreen;
 }
 </style>

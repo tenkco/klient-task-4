@@ -1,6 +1,6 @@
 <template>
   <div class="register">
-    <h2>Register</h2>
+    <h2>Регистрация</h2>
     <button @click="goBack" class="back-btn">Назад</button>
     <register-form
         @register="register"

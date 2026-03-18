@@ -6,7 +6,9 @@
       <router-link to="/register" v-if="!isAuthenticated" class="nav-link">Зарегистрироваться</router-link>
       <router-link to="/login" v-if="!isAuthenticated" class="nav-link">Войти в аккаунт</router-link>
       <button @click="logout" v-if="isAuthenticated" class="nav-button">Выйти из аккаунта</button>
-      <router-link to="/cart" v-if="isAuthenticated" class="nav-link">Корзина</router-link>
+      <router-link to="/cart" v-if="isAuthenticated" class="nav-link">
+        Корзина <span v-if="cartCount > 0" class="cart-count">({{ cartCount }})</span>
+      </router-link>
     </nav>
 
     <div class="catalog">
@@ -36,7 +38,8 @@ export default {
   },
   data() {
     return {
-      products: []
+      products: [],
+      cartCount: 0
     }
   },
   computed: {
@@ -46,6 +49,9 @@ export default {
   },
   mounted() {
     this.getProducts();
+    if (this.isAuthenticated) {
+      this.getCartCount();
+    }
   },
   methods: {
     async getProducts() {
@@ -60,6 +66,22 @@ export default {
         const {data} = await response.json()
         this.products = data
       } catch (e) {
+      }
+    },
+
+    async getCartCount() {
+      try {
+        const res = await fetch(API_URL + 'cart', {
+          method: 'GET',
+          headers: {
+            "Accept": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+        if (!res.ok) return;
+        const responseData = await res.json();
+        this.cartCount = responseData.data.length;
+      } catch(e) {
       }
     },
 
@@ -78,12 +100,15 @@ export default {
           },
         })
         if(!res.ok) return;
+
+        this.cartCount++;
       } catch (err) {
       }
     },
 
     logout() {
       localStorage.removeItem('token');
+      this.cartCount = 0;
       router.push('/');
       window.location.href = '/';
     }
@@ -153,15 +178,44 @@ nav {
   border: none;
 }
 
+.nav-link:hover{
+  background-color: black;
+  color: white;
+}
+
+.nav-button:hover{
+  background-color: white;
+  border: 1px solid darkred;
+  color: darkred;
+}
+
 .nav-link {
   color: black;
   background-color: transparent;
   border: 1px solid black;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
 }
 
 .nav-button {
   color: white;
   background-color: darkred;
   border: 1px solid darkred;
+}
+
+.cart-count {
+  font-weight: bold;
+  color: darkred;
+  background-color: #ffeeee;
+  padding: 2px 6px;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.nav-link:hover .cart-count {
+  background-color: darkred;
+  color: white;
 }
 </style>
