@@ -4,8 +4,8 @@
 
 1. **Клонирование проекта**
    ```bash
-   git clone https://github.com/Uliana-blinova/praktika_klient_server_3.0.git
-   cd praktika_klient_server_3.0
+   https://github.com/tenkco/klient-task-4.git
+   cd klient-task-4
 
 
 2. **Установка зависимостей**
